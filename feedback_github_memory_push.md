@@ -11,11 +11,20 @@ metadata:
 
 **Why:** 用户想要手动控制推送时机，避免频繁的自动提交。
 
-**How to apply:** 当用户在对话中说以下指令时，执行 `/Users/lizr/.claude/scripts/github-memory-save.sh`：
-- "推送记忆"
-- "推送记忆到GitHub"
-- "sync memory"
-- "push memory to github"
-- "保存记忆到GitHub"
+**How to apply:** 当用户在对话中说以下指令时，执行对应操作：
 
-执行脚本并返回结果即可，无需额外确认。
+**推送记忆** ("推送记忆"、"push memory"):
+```bash
+cd /Users/apple/.claude/projects/-Users-apple/memory
+git add .
+git commit -m "Update memory: $(date '+%Y-%m-%d %H:%M:%S')"
+git push origin main
+```
+
+**同步记忆** ("同步记忆"、"sync memory"):
+```bash
+cd /Users/apple/.claude/projects/-Users-apple/memory
+git pull origin main --rebase
+```
+
+执行后返回结果即可，无需额外确认。
